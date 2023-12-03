@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DepartmentViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Departments</h1>
+<a class="btn btn-primary" asp-action="Create">Create New Department</a>
+
+@if(Model.Count() > 0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(D => D.Code)</th>
+                <th>@Html.DisplayNameFor(D => D.Name)</th>
+                <th>@Html.DisplayNameFor(D => D.DateOfCreation)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@department.Code</td>
+                    <td>@department.Name</td>
+                    <td>@department.DateOfCreation</td>
+                    <td><a class="btn btn-warning" asp-action="Details" asp-route-id="@department.Id">Details</a></td>
+                    <td><a class="btn btn-success" asp-action="Edit" asp-route-id="@department.Id">Update</a></td>
+                    <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@department.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}else
+{
+    <div class="alert alert-info mt-3">There Is No Departmet</div>
+}

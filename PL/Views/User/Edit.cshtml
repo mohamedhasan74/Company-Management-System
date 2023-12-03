@@ -1,0 +1,40 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit User Information</h1>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="UserName"></label>
+        <input class="form-control" asp-for="UserName" />
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="FirstName"></label>
+        <input class="form-control" asp-for="FirstName" />
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="LastName"></label>
+        <input class="form-control" asp-for="LastName" />
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="PhoneNumber"></label>
+        <input class="form-control" asp-for="PhoneNumber" />
+        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="Email"></label>
+        <input class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <button class="btn btn-primary">Edit</button> |
+    <a class="btn btn-light" asp-action="Index">Back To List</a>
+</form>
+@section Scripts {
+    <Partial name="_ValidationScriptsPartial"></Partial>
+}

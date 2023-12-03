@@ -1,0 +1,50 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Details";
+    @inject IUnitOfWork unitOfWork;
+    var departments = new SelectList(unitOfWork.DepartmentRepository.GetAll(), "Id", "Name");
+}
+
+<h1>Employee Details</h1>
+<div class="mb-3 mx-auto">
+    <img src="~/files/images/@Model.ImageName" alt="Employee Image" class="img-fluid rounded-circle" width="100"/>
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Name"></label>
+    <input class="form-control" asp-for="Name" readonly/>
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Age"></label>
+    <input class="form-control" asp-for="Age" readonly />
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Address"></label>
+    <input class="form-control" asp-for="Address" readonly />
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Department"></label>
+    <select class="form-select" asp-for="DepartmentId" asp-items="@departments" disabled>
+    </select>
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Salary"></label>
+    <input class="form-control" asp-for="Salary" readonly />
+</div>
+<div class="form-check mb-3">
+    <input class="form-check-input" asp-for="IsActive" disabled>
+    <label class="form-check-label" asp-for="IsActive"></label>
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="Email"></label>
+    <input class="form-control" asp-for="Email" readonly />
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="PhoneNumber"></label>
+    <input class="form-control" asp-for="PhoneNumber" readonly />
+</div>
+<div class="mb-3">
+    <label class="col-form-label" asp-for="HireDate"></label>
+    <input class="form-control" asp-for="HireDate" readonly />
+</div>
+<a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+<a class="btn btn-light" asp-action="Index">Back To List</a>
